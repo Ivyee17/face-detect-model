@@ -1,0 +1,12 @@
+# Created by .ignore support plugin (hsz.mobi)
+.gitattributes
+.idea/.gitignore
+.idea/DeepID2-master.iml
+.idea/inspectionProfiles/
+.idea/misc.xml
+.idea/modules.xml
+.idea/other.xml
+.idea/
+__pycache__/
+
+

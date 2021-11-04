@@ -1,0 +1,6 @@
+model_checkpoint_path: "deepid100000.ckpt"
+all_model_checkpoint_paths: "deepid60000.ckpt"
+all_model_checkpoint_paths: "deepid70000.ckpt"
+all_model_checkpoint_paths: "deepid80000.ckpt"
+all_model_checkpoint_paths: "deepid90000.ckpt"
+all_model_checkpoint_paths: "deepid100000.ckpt"

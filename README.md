@@ -1,45 +1,56 @@
 # Face detection model
 
-> Revised from [this code](https://github.com/shen1994/DeepID). Thanks to the developers and we'll cite some results from that.
+> This project is revised from [DeepId Project](https://github.com/shen1994/DeepID). We appreciate and thank the developers in the original project for their contributions and cite some of the results into this project. 
 
 ## Dataset  
-- 人脸数据下载地址: [aligned_images_DB.tar.gz](http://www.cs.tau.ac.il/~wolf/ytfaces/)  
-- 人脸数据私人下载地址: [patch1, 密码: mor2](https://pan.baidu.com/s/18p9wnxLBmMMsNcDoH1M2Pg)   
-- 人脸数据私人下载地址: [patch2, 密码: 4eni](https://pan.baidu.com/s/1dl1VIlyzbG6BjC1SVTZXZw)   
-- 有账号密码下载地址: [用户名: wolftau, 密码: wtal997](http://www.cslab.openu.ac.il/personal/Hassner/wolftau/)  
-- 本项目测试图库: [密码: fa33](https://pan.baidu.com/s/1T9REvuxCZfG5rgaSz39vig)  
-- 已训练完的模型: [密码: dnla](https://pan.baidu.com/s/1m_587kj39tdFA2oXYts5GQ)  
+- In this project, we use the following dataset to train and test the model: [aligned_images_DB.tar.gz](http://www.cs.tau.ac.il/~wolf/ytfaces/). 
+- DeepID model has already pretrained in the original project. You can access the model [here](https://pan.baidu.com/s/1m_587kj39tdFA2oXYts5GQ). (Pwd: dnla)
 
-## Run and test  
-- 防止数据不均衡，小于100张的用于测试，不足600的做数据扩充  
-`python image_augmentation.py`  
-- 将原图剪裁，剪裁成（47 * 55）大小的图片，原图是人脸对齐的  
-`python image_crop.py`
-- 将图库进行划分，保存各分块的本地地址，存储为csv文件  
-`python image_split.py`  
-- 将划分后的数据保存成向量存储形式, 存储为pkl文件  
-`python image_vector.py`  
-- 训练数据  
-`python train.py`  
-- 在命令行输入,启动tensorboard观测曲线  
+## Run and test 
+### Pre-process to the dataset
+If you use the Youtube Dataset as the dataset here. We've already finished the preprocess to these images, so as to skip this part. However, if you want to use this model to another (or even self-collected) dataset, following command helps you deal with the preprocess to the target dataset.
+
+Note that the format and image information of each data set are different. Therefore, the following script files may need to be modified and matched to the target dataset. We describe the usage and aim of each script. For different datasets, you can modify these files to ensure that they meet the preprocessing requirements.
+ 
+1. `python image_augmentation.py`  
+This script is used to prevent the bias of data. Less than 100 figures will be used as test, while no more than 600 figures will be expanded for data. 
+2. `python image_crop.py`  
+This script is used to cut from the original image. Since the dataset we provided is already aligned. What it does is to cut it into the size with (47*55).
+3. `python image_split.py`  
+This script is used to cut the image set to the train, validate and test dataset. Each set is stored into the csv file. Note that csv file is not the final file format used in training, as the next step will be introduced.
+4. `python image_vector.py`  
+This script will transform each of the csv file into the pkl file, where each picture is stored as the vector format. Here, these pkl files are used in the training and testing process for the models directly.
+ 
+> #### Supplementary for models  
+> If you want to see the details of the model, run with the tensorboard to watch the curves and models' structure.
+> 1. Run tensorboard with following command. `log` can be revised to your own folder's path to save the log files generated with tensorboard.  
 `tensorboard --logdir=log`  
-- 在浏览器中输入,显示曲线  
+> 2. Start a browser and see the curves revealed with tensorboard. By default, the port used for tensorboard is 6006. You can change the port number if conflicting.  
 `http://localhost:6006/#scalars`  
-- 测试数据  
-`python test.py`  
+
+
+### Pre-trained Model
+
+1. A pre-trained model is already given. (If there are problems to use, you can get your own pre-trained model by extracting the model from DeepID. In fact, we'll use the first two layers as the pretrained model.) For running this project, `train_center_pb.py` read the `model.pb` and train the layers in the model with training set stored in `train_vector_dataset.pkl`. `datapb.pkl` is generated to save the training result of these two layers. 
+
+2. `train_institution.py` is to train the transformer used by institution to extract the center model to the specific model used in institution. You can revise the model by yourself to train a better model. (For this example, we only use the last two layer of DeepID as the transformer). If using your own model, you'll need to satisfy the input with [12,10,40] dimension, which is the output of `model.pb` and the data format in `data.pkl`. Output in this step is stored in the `model` folder.
+
+3. For testing data, use `test_center.py` to inference the output from the `model.pb` (i.e. to get the result of the first two conv layer). Remember that in the test data, records are stored as (d1,d2,s), where d1 is the first picture, d2 is the second picture and s is the similarity between d1 and d2 (0 for the same person, 1 for different persons), so two files, `data1.pkl` and `data2.pkl`, are generated separately, which saves the output of the center's two layers) 
+
+4. With `test_institution.py`, the output from the first two layers generated by `train_institution.py` will be further converted to the final vector used to detect if two persons are the same.
 
 ## References
-As previously introduced, we also acknowledge the contributions the orginal project is acknowledged. You can access these materials to take a deep dive.
+As previously introduced, we also acknowledge the contributions the original project is acknowledged. You can access these materials to take a deep dive.
 - Code: https://github.com/jinze1994/DeepID1
 - DeepID Essay: https://www.cv-foundation.org/openaccess/content_cvpr_2014/papers/Sun_Deep_Learning_Face_2014_CVPR_paper.pdf
 
 ## Appendix. Performance Data
-- 训练图(极小数据测试训练) 
+> Copied from the original project. Thanks!
+- Training figure with tiny training data.
 ![image](https://github.com/shen1994/README/raw/master/images/DeepID_train.jpg)  
-- 测试图  
+- Testing figure  
 ![image](https://github.com/shen1994/README/raw/master/images/DeepID_test.jpg)  
-- 训练曲线accuracy  
+- Accuracy on training  
 ![image](https://github.com/shen1994/README/raw/master/images/DeepID_acc.jpg)  
-- 训练曲线loss  
+- Loss on training
 ![image](https://github.com/shen1994/README/raw/master/images/DeepID_loss.jpg)
-

@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Jun  1 21:26:31 2018
-
-@author: shen1994
-"""
+# -*- coding: utf-8 -*-
+# @Time    : 2021-10
+# @Author  : Wenhan Wu
+# @FileName: image_split.py
+# @Project :
+# @GitHub  : Ivyee17
 
 import os
 import random

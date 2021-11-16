@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Fri Jun  1 10:30:30 2018
-
-@author: shen1994
-"""
+# -*- coding: utf-8 -*-
+# @Time    : 2021-10
+# @Author  : Wenhan Wu
+# @FileName: image_crop.py
+# @Project :
+# @GitHub  : Ivyee17
 
 import os
 from PIL import Image

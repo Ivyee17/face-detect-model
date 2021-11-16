@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+# @Time    : 2021-11
+# @Author  : Wenhan Wu
+# @FileName: train_center.py
+# @Project :
+# @GitHub  : Ivyee17
 """
 We use the pre-trained model to train in the center.
 (ckpt is the full file, do not use it in public)

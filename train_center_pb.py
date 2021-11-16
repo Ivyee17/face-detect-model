@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+# @Time    : 2021-11
+# @Author  : Wenhan Wu
+# @FileName: train_center_pb.py
+# @Project :
+# @GitHub  : Ivyee17
 """
 We use the pre-trained pb file to train in the center.
 """

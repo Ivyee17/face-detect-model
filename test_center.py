@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+# @Time    : 2021-10
+# @Author  : Wenhan Wu
+# @FileName: test_center.py
+# @Project :
+# @GitHub  : Ivyee17
 """
 Use pre-trained model to train for center.
 """

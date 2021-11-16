@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
+# @Time    : 2021-11
+# @Author  : Wenhan Wu
+# @FileName: test_institution.py
+# @Project :
+# @GitHub  : Ivyee17
 """
 Testing on pre-trained model.
 """
+
 import pickle
 
 import tensorflow.compat.v1 as tf

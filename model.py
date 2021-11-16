@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Jun  3 21:36:18 2018
-
-@author: shen1994
-"""
+# @Time    : 2018-06-03 21:36:18
+# @Author  : shen1994
+# @FileName: model.py
+# @Project :
+# @GitHub  : shen1994
 
 import tensorflow.compat.v1 as tf
 tf.disable_v2_behavior()

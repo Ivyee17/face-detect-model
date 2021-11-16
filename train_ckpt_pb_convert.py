@@ -1,4 +1,9 @@
 # -*- coding: utf-8 -*-
+# @Time    : 2021-11
+# @Author  : Wenhan Wu
+# @FileName: train_ckpt_pb_convert.py
+# @Project :
+# @GitHub  : Ivyee17
 """From the pretrained-model, extract the model of the first two level as the center code. It can be trained using
 train_center.py by using all images in the dataset, but we give an extraction which can be faster to get the data
 from the center. Remember that if you use the model trained by yourself, you'll also need to run this script in order

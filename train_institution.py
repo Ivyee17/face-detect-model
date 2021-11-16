@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Sun Jun  3 21:31:56 2018
-
-@author: shen1994
-"""
+# @Time    : 2021-11
+# @Author  : Wenhan Wu
+# @FileName: train_institution.py
+# @Project :
+# @GitHub  : Ivyee17
 
 import os
 import pickle

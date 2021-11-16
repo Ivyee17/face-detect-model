@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Mon Jun  4 19:39:19 2018
-
-@author: shen1994
-"""
+# -*- coding: utf-8 -*-
+# @Time    : 2021-10
+# @Author  : Wenhan Wu
+# @FileName: image_augmentation.py
+# @Project :
+# @GitHub  : Ivyee17
 
 import os
 import random
